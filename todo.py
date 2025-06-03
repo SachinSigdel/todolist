@@ -12,12 +12,12 @@ def add_new_task():
     return tasks
 
 def display():
-    headers = ["Id","Tasks","Compete Status"]
+    headers = ["Id","Tasks","Complete Status"]
     print(tabulate(todo_list, headers=headers, tablefmt="grid"))
 
 def complete_task(id):
     for each in todo_list:
-        if each[0] == int(id):
+        if each[0] == id:
             each[2] = True
             return
     print("Task not found!")
@@ -42,7 +42,7 @@ while loop2 == True:
     if complete.lower() == "y":
         try:
             print("\n")
-            complete_id = input("Enter the id of the task which is completed: ")
+            complete_id = int(input("Enter the id of the task which is completed: "))
             complete_task(complete_id)
             print("\n")
             display()
