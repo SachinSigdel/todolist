@@ -18,5 +18,4 @@ while add_new_task == True:
 
 headers = ["Id","Tasks"]
 
-for items in tasks.items():
-    print(tabulate(items, headers=headers, tablefmt="grid"))
+print(tabulate(tasks.items(), headers=headers, tablefmt="grid"))
