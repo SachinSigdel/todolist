@@ -1,21 +1,18 @@
 from tabulate import tabulate
 
-tasks = {}
-task_id = 1
-add_new_task = True
-while add_new_task == True:
-    task = input("Enter your task for the day: ")
-    tasks[task_id] = task
+todo_list = []
+def add_new_task():
+    tasks = []
+    task = input("\nEnter your task for the day: ")
+    complete_status = False
+    task_id = 1
+    tasks.append(task_id)
+    tasks.append(task)
+    tasks.append(complete_status)
     task_id += 1
-    more_task = input("\nDo you want to add more tasks?(y/n)")
-    if more_task.strip().lower() == "y":
-        add_new_task == True
-    elif more_task.strip().lower() == "n":
-        add_new_task == False
-        break
-    else:
-        print("Choose a valid option!")
+    return tasks
 
-headers = ["Id","Tasks"]
+todo_list.append(add_new_task())
 
-print(tabulate(tasks.items(), headers=headers, tablefmt="grid"))
+headers = ["Id","Tasks","Compete Status"]
+print(tabulate(todo_list, headers=headers, tablefmt="grid"))
