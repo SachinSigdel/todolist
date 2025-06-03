@@ -1,18 +1,54 @@
 from tabulate import tabulate
 
 todo_list = []
+task_id = 1
 def add_new_task():
     tasks = []
     task = input("\nEnter your task for the day: ")
     complete_status = False
-    task_id = 1
     tasks.append(task_id)
     tasks.append(task)
     tasks.append(complete_status)
-    task_id += 1
     return tasks
 
-todo_list.append(add_new_task())
+def display():
+    headers = ["Id","Tasks","Compete Status"]
+    print(tabulate(todo_list, headers=headers, tablefmt="grid"))
 
-headers = ["Id","Tasks","Compete Status"]
-print(tabulate(todo_list, headers=headers, tablefmt="grid"))
+def complete_task(id):
+    for each in todo_list:
+        if each[0] == int(id):
+            each[2] = True
+            break
+        else:
+            print("Task not found!")
+            break
+
+add_more = True
+while add_more == True:
+    add_new = input("Add new task? (y/n)")
+    if add_new.lower() == "y":
+        todo_list.append(add_new_task())
+        task_id += 1
+        print("\n")
+        display()
+    elif add_new.lower() == "n":
+        add_more = False
+    else:
+        print("\nChoose a valid option!")
+
+loop2 = True
+while loop2 == True:
+    complete = input("Is a task completed? (y/n)")
+    if complete.lower() == "y":
+        try:
+            task_id = input("Enter the id of the task which is completed: ")
+            complete_task(task_id)
+            print("\n")
+            display()
+        except ValueError:
+            print("Invalid ID!")
+    elif complete.lower() == "n":
+        loop2 = False
+    else:
+        print("Enter a valid option!")
