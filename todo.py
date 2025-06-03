@@ -19,13 +19,12 @@ def complete_task(id):
     for each in todo_list:
         if each[0] == int(id):
             each[2] = True
-            break
-        else:
-            print("Task not found!")
-            break
+            return
+    print("Task not found!")
 
 add_more = True
 while add_more == True:
+    print("\n")
     add_new = input("Add new task? (y/n)")
     if add_new.lower() == "y":
         todo_list.append(add_new_task())
@@ -42,8 +41,9 @@ while loop2 == True:
     complete = input("Is a task completed? (y/n)")
     if complete.lower() == "y":
         try:
-            task_id = input("Enter the id of the task which is completed: ")
-            complete_task(task_id)
+            print("\n")
+            complete_id = input("Enter the id of the task which is completed: ")
+            complete_task(complete_id)
             print("\n")
             display()
         except ValueError:
