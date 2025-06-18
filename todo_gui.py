@@ -38,6 +38,8 @@ class TodoGUI:
             }
             self.todolist.append(self.todo_task)
             messagebox.showinfo("Added","New Task Added")
+        else:
+            messagebox.showwarning("Empty task", "Please enter a task!")
 
     def display(self):
     # Clear the frame first
