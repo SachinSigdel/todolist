@@ -47,6 +47,7 @@ class TodoGUI:
             widget.destroy()
 
         for index, task in enumerate(self.todolist):
+            task_id=task["Id"]
             tk.Label(self.display_frame, text="ID").grid(row=0,column=0,padx=10,pady=10)
             tk.Label(self.display_frame, text="Task").grid(row=0,column=1,padx=10,pady=10)
             tk.Label(self.display_frame, text="Status").grid(row=0,column=2,padx=10,pady=10)
@@ -55,15 +56,15 @@ class TodoGUI:
             tk.Label(self.display_frame, text=task["Complete Status"]).grid(row=index+1, column=2,padx=10,pady=10)
 
             tk.Button(self.display_frame, text="Complete", 
-                    command=lambda task_id=task["Id"]: self.complete_task(task_id)
+                    command=lambda: self.complete_task(task_id)
                     ).grid(row=index+1, column=3,padx=10,pady=10)
             tk.Button(self.display_frame, text="Delete", 
-                    command=lambda task_id=task["Id"]: self.delete_task(task_id)
+                    command=lambda: self.delete_task(task_id)
                     ).grid(row=index+1,column=4,padx=10,pady=10)
 
-    def complete_task(self,task_id):
+    def complete_task(self,id):
         for each in self.todolist:
-            if str(task_id) == each["Id"]:
+            if str(id) == each["Id"]:
                 each["Complete Status"] = "✔ Complete"
                 messagebox.showinfo("Completed","Task completed!")
                 self.display()
