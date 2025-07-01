@@ -1,6 +1,7 @@
 from tabulate import tabulate
 
 class TodoList:
+    # class to create object of every task and pass it to dictionary later
     task_id = 1
     def __init__(self,tasks,complete_status):
         self.task_id = TodoList.task_id
